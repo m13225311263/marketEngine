@@ -1,0 +1,1 @@
+java -Xmx3550m -Xms3550m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+PrintGCDetails -jar
