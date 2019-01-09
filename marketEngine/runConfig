@@ -1,1 +1,1 @@
-JVM　调优java -Xmx3550m -Xms3550m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+PrintGCDetails -jar
+java -Xmx3550m -Xms3550m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+PrintGCDetails -jar

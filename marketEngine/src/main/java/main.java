@@ -1,5 +1,8 @@
 import com.ats.marketEngine.entity.Order;
+import com.ats.marketEngine.input.CSVRead;
 import com.ats.marketEngine.service.MarchEngine;
+import com.ats.marketEngine.service.MarchEngine.ME;
+import java.util.ArrayList;
 
 /**
  * Creator:guxt Date 2019/01/08
@@ -7,34 +10,21 @@ import com.ats.marketEngine.service.MarchEngine;
 public class main {
 
     public static void main(String[] args) {
-        MarchEngine me = new MarchEngine();
-        Order order = new Order();
-        order.setMarketID(1);
-        order.setPrice(1);
-        order.setQty(1000);
-        order.setSide(1);
-        order.setTraderID(10);
-        int orderid = me.placeAOrder(order);
+        int begin_price = 2449 ;
+        MarchEngine me = ME.INSTANCE.getInstance();
+        me.initialize(begin_price);
+        String dirPath = System.getProperty("user.dir");
+        String filePath= dirPath+"\\src\\main\\resources\\test.csv";
+        CSVRead csvRead = new CSVRead(filePath);
+        ArrayList<Order> autoOrders =csvRead.getAutoOrders();
+        long startTime=System.currentTimeMillis();//获取开始时间
+        for(Order order: autoOrders){
+            me.placeAOrder(order);
+        }
+        long endTime=System.currentTimeMillis(); //获取结束时间
+        System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
+        System.out.println(me.getCountTime());
 
-        Order order1 = new Order();
-        order1.setMarketID(1);
-        order1.setPrice(1);
-        order1.setQty(10000);
-        order1.setSide(0);
-        order1.setTraderID(11);
-        int orderid1 = me.placeAOrder(order1);
-
-        Order order2 = new Order();
-        order2.setMarketID(1);
-        order2.setPrice(1);
-        order2.setQty(1000);
-        order2.setSide(1);
-        order2.setTraderID(12);
-        int orderid2 = me.placeAOrder(order2);
-
-        System.out.println("OrderId:" + orderid);
-        System.out.println("OrderId:" + orderid1);
-        System.out.println("OrderId:" + orderid2);
     }
 
 }
