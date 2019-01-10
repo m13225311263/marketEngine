@@ -1,4 +1,4 @@
-package com.ats.marketEngine.entity;
+package com.guxt.fakemarket.entity;
 
 import lombok.Data;
 
@@ -11,3 +11,4 @@ public class OrderBookUnit {
     private int qty;
     private int traderID;
 }
+
