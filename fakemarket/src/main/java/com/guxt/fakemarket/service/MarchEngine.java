@@ -53,7 +53,6 @@ public class MarchEngine {
 
     private void executeTrade(int marketID, int traderID, int traderID2, int price, int qty) {
         countTime++;
-
         System.out.println(
             "| MarketID: " + marketID + "|TraderID: " + traderID + "|TraderID2: " + traderID2
                 + "|Price " + price + "|Qty: " + qty);
